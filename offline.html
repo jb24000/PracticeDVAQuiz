@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS DVA-C02 Trainer - Offline</title>
+    <meta name="theme-color" content="#FF9900">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #FF9900 0%, #FF6600 100%);
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .background-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg); 
+            }
+        }
+
+        .offline-container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .offline-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.05); 
+                opacity: 0.8;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .offline-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .status-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .status-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .status-indicator.online {
+            background: var(--success-color);
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        .status-indicator.offline {
+            background: var(--danger-color);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .offline-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+        }
+
+        .offline-tips {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 3px solid var(--warning-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .offline-tips h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--warning-color);
+        }
+
+        .offline-tips ul {
+            list-style: none;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .offline-tips li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .offline-tips li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .offline-message {
+                font-size: 16px;
+            }
+            
+            .offline-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>You're Currently Offline</h1>
+        <p class="offline-message">
+            Don't worry! The DVA-C02 Exam Trainer works offline. Your progress is saved locally.
+        </p>
+
+        <div class="status-info">
+            <div class="status-item">
+                <span class="status-label">Connection Status</span>
+                <span class="status-value">
+                    <span id="connectionStatus">Checking</span>
+                    <span class="status-indicator offline" id="statusIndicator"></span>
+                </span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Last Online</span>
+                <span class="status-value" id="lastOnline">Unknown</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Cached Questions</span>
+                <span class="status-value" id="cachedQuestions">Checking...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Local Progress</span>
+                <span class="status-value" id="localProgress">Saved</span>
+            </div>
+        </div>
+
+        <div class="offline-features">
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <div class="feature-text">Progress Saved</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-text">Questions Available</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">Full Speed</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-text">Auto Sync</div>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" onclick="retryConnection()">
+                Try Again
+                <span id="loadingSpinner" style="display: none;" class="loading-spinner"></span>
+            </button>
+            <a href="/PracticeDVAQuiz/" class="btn btn-secondary">Continue Offline</a>
+        </div>
+
+        <div class="offline-tips">
+            <h3>💡 Offline Mode Tips</h3>
+            <ul>
+                <li>All 500+ questions are available offline</li>
+                <li>Your progress automatically syncs when reconnected</li>
+                <li>Timer and scoring work normally</li>
+                <li>Strategic features remain fully functional</li>
+                <li>Recent questions tracking continues offline</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Check connection status
+        function checkConnection() {
+            const connectionStatus = document.getElementById('connectionStatus');
+            const statusIndicator = document.getElementById('statusIndicator');
+            
+            if (navigator.onLine) {
+                connectionStatus.textContent = 'Online';
+                statusIndicator.className = 'status-indicator online';
+            } else {
+                connectionStatus.textContent = 'Offline';
+                statusIndicator.className = 'status-indicator offline';
+            }
+        }
+
+        // Update last online time
+        function updateLastOnline() {
+            const lastOnline = localStorage.getItem('dva_lastOnline');
+            if (lastOnline) {
+                const date = new Date(parseInt(lastOnline));
+                const timeAgo = getTimeAgo(date);
+                document.getElementById('lastOnline').textContent = timeAgo;
+            }
+        }
+
+        // Get time ago string
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = Math.floor(seconds / 31536000);
+            if (interval > 1) return interval + " years ago";
+            if (interval === 1) return "1 year ago";
+            
+            interval = Math.floor(seconds / 2592000);
+            if (interval > 1) return interval + " months ago";
+            if (interval === 1) return "1 month ago";
+            
+            interval = Math.floor(seconds / 86400);
+            if (interval > 1) return interval + " days ago";
+            if (interval === 1) return "1 day ago";
+            
+            interval = Math.floor(seconds / 3600);
+            if (interval > 1) return interval + " hours ago";
+            if (interval === 1) return "1 hour ago";
+            
+            interval = Math.floor(seconds / 60);
+            if (interval > 1) return interval + " minutes ago";
+            if (interval === 1) return "1 minute ago";
+            
+            return "Just now";
+        }
+
+        // Check cached questions
+        function checkCachedQuestions() {
+            const recentQuestions = localStorage.getItem('dvac02_recent_questions');
+            if (recentQuestions) {
+                const questions = JSON.parse(recentQuestions);
+                document.getElementById('cachedQuestions').textContent = `${questions.length} available`;
+            } else {
+                document.getElementById('cachedQuestions').textContent = '500+ available';
+            }
+        }
+
+        // Check local progress
+        function checkLocalProgress() {
+            const keys = Object.keys(localStorage).filter(key => key.startsWith('dva'));
+            document.getElementById('localProgress').textContent = `${keys.length} items saved`;
+        }
+
+        // Retry connection
+        function retryConnection() {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            loadingSpinner.style.display = 'inline-block';
+            
+            // Simulate checking connection
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+                checkConnection();
+                
+                if (navigator.onLine) {
+                    // Save current time as last online
+                    localStorage.setItem('dva_lastOnline', Date.now().toString());
+                    // Redirect to main app
+                    window.location.href = '/PracticeDVAQuiz/';
+                } else {
+                    alert('Still offline. You can continue using the app in offline mode.');
+                }
+            }, 1500);
+        }
+
+        // Monitor connection changes
+        window.addEventListener('online', () => {
+            checkConnection();
+            localStorage.setItem('dva_lastOnline', Date.now().toString());
+            setTimeout(() => {
+                window.location.href = '/PracticeDVAQuiz/';
+            }, 1000);
+        });
+
+        window.addEventListener('offline', () => {
+            checkConnection();
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            checkConnection();
+            updateLastOnline();
+            checkCachedQuestions();
+            checkLocalProgress();
+            
+            // Update every 5 seconds
+            setInterval(() => {
+                checkConnection();
+                updateLastOnline();
+            }, 5000);
+        });
+
+        // Save last online time when online
+        if (navigator.onLine) {
+            localStorage.setItem('dva_lastOnline', Date.now().toString());
+        }
+    </script>
+</body>
+</html>
