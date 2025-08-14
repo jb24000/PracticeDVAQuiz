@@ -1,30 +1,79 @@
 # 🚀 AWS DVA-C02 Practice Quiz
+# 🚀 AWS DVA-C02 Strategic Exam Trainer
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?style=for-the-badge)](https://jb24000.github.io/PracticeDVAQuiz/)
 [![AWS](https://img.shields.io/badge/AWS-DVA--C02-FF9900?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/certification/)
-[![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge)](https://jb24000.github.io/PracticeDVAQuiz/)
+[![PWA](https://img.shields.io/badge/PWA-Ready-5A9FD4?style=for-the-badge&logo=pwa)](https://web.dev/progressive-web-apps/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## 🎯 Features
+> Master the AWS Certified Developer Associate exam with strategic timing and 500+ practice questions
 
-✨ **500+ Exam Questions** • 📱 **Works Offline** • ⏱️ **Strategic Timer** • 📊 **Performance Analytics**
+## ✨ Features
 
-## 🔗 Quick Links
+- 📱 **Progressive Web App** - Works offline, installable on any device
+- ⏱️ **Strategic Timing** - Real-time pace monitoring and time management
+- 📚 **500+ Questions** - Comprehensive coverage of all exam domains
+- 🎯 **4 Training Modes** - Triage, Speed, Full Exam, and Strategic Practice
+- 📊 **Detailed Analytics** - Track progress and identify weak areas
+- 🔄 **Anti-Memorization** - Dynamic question and answer shuffling
 
-- 🌐 **Live App:** [jb24000.github.io/PracticeDVAQuiz](https://jb24000.github.io/PracticeDVAQuiz/)
-- 📚 **Domains:** Development (32%) • Security (26%) • Deployment (24%) • Troubleshooting (18%)
-- 🎮 **Modes:** Triage • Speed • Full Exam • Strategic Practice
+## 🚦 Quick Start
 
-## 💻 Install as App
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/aws-dva-c02-trainer.git
 
-**📱 Mobile:** Add to Home Screen from browser menu  
-**🖥️ Desktop:** Click install icon in address bar
+# Open index.html in your browser
+open index.html
 
-## 🛠️ Tech Stack
+# Or deploy to GitHub Pages
+git push origin main
+```
 
-`HTML5` `CSS3` `JavaScript` `PWA` `Service Worker`
+## 📦 Installation
+
+### GitHub Pages
+1. Fork this repository
+2. Go to Settings → Pages
+3. Select "Deploy from branch" → main
+4. Visit `[https://jb24000.github.io/PracticeQuizDVA]`
+
+### Local Development
+Simply open `index.html` in any modern browser. No build process required!
+
+## 🎮 Training Modes
+
+| Mode | Duration | Focus |
+|------|----------|-------|
+| ⚡ **Triage** | 30 sec/question | Quick decision making |
+| 🏃 **Speed** | 90 sec/question | Rapid analysis |
+| 📝 **Full Exam** | 130 minutes | Realistic simulation |
+| 🎯 **Strategic** | Self-paced | Master timing strategies |
+
+## 🏗️ Tech Stack
+
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Design**: Glassmorphism UI with animated gradients
+- **Storage**: LocalStorage for progress persistence
+- **PWA**: Service Worker for offline functionality
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+MIT License - feel free to use this for your exam preparation!
+
+## 🙏 Acknowledgments
+
+- AWS Documentation and Exam Guide
+- The open-source community
+- All contributors and testers
 
 ---
 
 <div align="center">
-  <b>Turn 72% fails into 85%+ passes! 🎯</b>
+  Made with ❤️ for AWS certification aspirants
+  
+  ⭐ Star this repo if it helps you pass the exam!
 </div>
