@@ -35,7 +35,7 @@ git push origin main
 1. Fork this repository
 2. Go to Settings → Pages
 3. Select "Deploy from branch" → main
-4. Visit `[https://jb24000.github.io/PracticeQuizDVA]`
+4. Visit `[https://jb24000.github.io/PracticeDVAQuiz]`
 
 ### Local Development
 Simply open `index.html` in any modern browser. No build process required!
