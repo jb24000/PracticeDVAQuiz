@@ -1,4 +1,3 @@
-# 🚀 AWS DVA-C02 Practice Quiz
 # 🚀 AWS DVA-C02 Strategic Exam Trainer
 
 [![AWS](https://img.shields.io/badge/AWS-DVA--C02-FF9900?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/certification/)
